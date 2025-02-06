@@ -63,10 +63,10 @@ function App() {
 function Pizza(props) {
   return (
     <div className="pizza">
-      <img src={props.photoSrc} alt={props.name}></img>
+      <img src={props.obj.photoName} alt={props.obj.name}></img>
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredient}</p>
+        <h3>{props.obj.name}</h3>
+        <p>{props.obj.ingredients}</p>
       </div>
     </div>
   );
@@ -77,36 +77,9 @@ function Menu() {
     <main className="menu">
       <h2>Our Menu </h2>
       <div className="pizzas">
-        <Pizza
-          name="Focaccia"
-          ingredient="Bread with italian olive oil and rosemary"
-          photoSrc="pizzas/focaccia.jpg"
-        />
-        <Pizza
-          name={pizzaData[1].name}
-          ingredient={pizzaData[1].ingredients}
-          photoSrc={pizzaData[1].photoName}
-        />
-        <Pizza
-          name={pizzaData[2].name}
-          ingredient={pizzaData[2].ingredients}
-          photoSrc={pizzaData[2].photoName}
-        />
-        <Pizza
-          name={pizzaData[3].name}
-          ingredient={pizzaData[3].ingredients}
-          photoSrc={pizzaData[3].photoName}
-        />
-        <Pizza
-          name={pizzaData[4].name}
-          ingredient={pizzaData[4].ingredients}
-          photoSrc={pizzaData[4].photoName}
-        />
-        <Pizza
-          name={pizzaData[5].name}
-          ingredient={pizzaData[5].ingredients}
-          photoSrc={pizzaData[5].photoName}
-        />
+        {pizzaData.map((pizza) => (
+          <Pizza obj={pizza} key={pizza.name} />
+        ))}
       </div>
     </main>
   );
